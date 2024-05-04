@@ -1,0 +1,104 @@
+2024-05-04 10:59:01.000 [restartedMain] INFO  com.fdmgroup.apmproject.ApmProjectApplication - Starting ApmProjectApplication using Java 17.0.9 with PID 14012 (D:\Important\Coding\eclipse\eclipse_files\apm-group-project\target\classes started by admin in D:\Important\Coding\eclipse\eclipse_files\apm-group-project)
+2024-05-04 10:59:01.007 [restartedMain] DEBUG com.fdmgroup.apmproject.ApmProjectApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2024-05-04 10:59:01.009 [restartedMain] INFO  com.fdmgroup.apmproject.ApmProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2024-05-04 10:59:47.652 [restartedMain] INFO  com.fdmgroup.apmproject.ApmProjectApplication - Starting ApmProjectApplication using Java 17.0.9 with PID 20948 (D:\Important\Coding\eclipse\eclipse_files\apm-group-project\target\classes started by admin in D:\Important\Coding\eclipse\eclipse_files\apm-group-project)
+2024-05-04 10:59:47.661 [restartedMain] DEBUG com.fdmgroup.apmproject.ApmProjectApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2024-05-04 10:59:47.662 [restartedMain] INFO  com.fdmgroup.apmproject.ApmProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2024-05-04 10:59:58.136 [restartedMain] INFO  com.fdmgroup.apmproject.ApmProjectApplication - Starting ApmProjectApplication using Java 17.0.9 with PID 10828 (D:\Important\Coding\eclipse\eclipse_files\apm-group-project\target\classes started by admin in D:\Important\Coding\eclipse\eclipse_files\apm-group-project)
+2024-05-04 10:59:58.142 [restartedMain] DEBUG com.fdmgroup.apmproject.ApmProjectApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2024-05-04 10:59:58.143 [restartedMain] INFO  com.fdmgroup.apmproject.ApmProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2024-05-04 11:00:05.188 [restartedMain] INFO  com.fdmgroup.apmproject.service.StatusService - Status successfully created
+2024-05-04 11:00:05.201 [restartedMain] INFO  com.fdmgroup.apmproject.service.StatusService - Status successfully created
+2024-05-04 11:00:05.211 [restartedMain] INFO  com.fdmgroup.apmproject.service.StatusService - Status successfully created
+2024-05-04 11:00:05.383 [restartedMain] INFO  com.fdmgroup.apmproject.service.UserService - User successfully registered
+2024-05-04 11:00:05.399 [restartedMain] INFO  com.fdmgroup.apmproject.service.UserService - User successfully registered
+2024-05-04 11:00:05.415 [restartedMain] INFO  com.fdmgroup.apmproject.service.MerchantCategoryCodeService - MCC successfully created
+2024-05-04 11:00:05.431 [restartedMain] INFO  com.fdmgroup.apmproject.service.MerchantCategoryCodeService - MCC successfully created
+2024-05-04 11:00:05.440 [restartedMain] INFO  com.fdmgroup.apmproject.service.MerchantCategoryCodeService - MCC successfully created
+2024-05-04 11:00:05.450 [restartedMain] INFO  com.fdmgroup.apmproject.service.MerchantCategoryCodeService - MCC successfully created
+2024-05-04 11:00:05.459 [restartedMain] INFO  com.fdmgroup.apmproject.service.MerchantCategoryCodeService - MCC successfully created
+2024-05-04 11:00:05.470 [restartedMain] INFO  com.fdmgroup.apmproject.service.MerchantCategoryCodeService - MCC successfully created
+2024-05-04 11:00:05.470 [restartedMain] INFO  com.fdmgroup.apmproject.service.ForeignExchangeCurrencyService - fx_rates.json file already exists and will not be updated.
+2024-05-04 11:00:05.476 [restartedMain] INFO  com.fdmgroup.apmproject.service.ForeignExchangeCurrencyService - Mapper module ready for Json deserialization
+2024-05-04 11:00:05.615 [restartedMain] INFO  com.fdmgroup.apmproject.service.ForeignExchangeCurrencyService - Currencies list is successfully updated to Mon, 29 Apr 2024 23:55:10 GMT
+2024-05-04 11:00:05.626 [restartedMain] INFO  com.fdmgroup.apmproject.service.ForeignExchangeCurrencyService - Foreign currency successfully registered
+2024-05-04 11:00:05.635 [restartedMain] INFO  com.fdmgroup.apmproject.service.UserService - Returning user's details
+2024-05-04 11:00:05.648 [restartedMain] INFO  com.fdmgroup.apmproject.service.StatusService - Returning Status' details
+2024-05-04 11:00:05.663 [restartedMain] INFO  com.fdmgroup.apmproject.service.AccountService - Account successfully created
+2024-05-04 11:00:05.677 [restartedMain] INFO  com.fdmgroup.apmproject.service.AccountService - Account successfully created
+2024-05-04 11:00:05.690 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully created
+2024-05-04 11:00:05.700 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully created
+2024-05-04 11:00:05.711 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Returning Credit Card's details
+2024-05-04 11:00:05.719 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Returning Credit Card's details
+2024-05-04 11:00:05.722 [restartedMain] INFO  com.fdmgroup.apmproject.service.MerchantCategoryCodeService - Returning MCC details
+2024-05-04 11:00:05.725 [restartedMain] INFO  com.fdmgroup.apmproject.service.MerchantCategoryCodeService - Returning MCC details
+2024-05-04 11:00:05.726 [restartedMain] INFO  com.fdmgroup.apmproject.service.MerchantCategoryCodeService - Returning MCC details
+2024-05-04 11:00:05.728 [restartedMain] INFO  com.fdmgroup.apmproject.service.MerchantCategoryCodeService - Returning MCC details
+2024-05-04 11:00:05.728 [restartedMain] INFO  com.fdmgroup.apmproject.service.ForeignExchangeCurrencyService - Currency obtained
+2024-05-04 11:00:05.731 [restartedMain] INFO  com.fdmgroup.apmproject.service.ForeignExchangeCurrencyService - Currency obtained
+2024-05-04 11:00:05.748 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:05.764 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:05.778 [restartedMain] INFO  com.fdmgroup.apmproject.service.ForeignExchangeCurrencyService - Conversion from USD to another currency: BaseCurrencyCodeUSD & targetCurrencyCode: SGD
+2024-05-04 11:00:05.780 [restartedMain] INFO  com.fdmgroup.apmproject.service.ForeignExchangeCurrencyService - The exchange rate used for this transaction is : 1.3601109738977
+2024-05-04 11:00:05.792 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:05.831 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully updated
+2024-05-04 11:00:05.856 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:05.867 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:05.895 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully updated
+2024-05-04 11:00:05.918 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:05.928 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:05.953 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:05.963 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:05.989 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:05.998 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:06.025 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.034 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:06.063 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully updated
+2024-05-04 11:00:06.088 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.098 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:06.124 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.133 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:06.159 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.168 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:06.194 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully updated
+2024-05-04 11:00:06.218 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.239 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:06.264 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully updated
+2024-05-04 11:00:06.287 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.296 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:06.320 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully updated
+2024-05-04 11:00:06.344 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.355 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:06.378 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully updated
+2024-05-04 11:00:06.399 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.400 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Finding all credit card with Approved Status
+2024-05-04 11:00:06.413 [restartedMain] INFO  com.fdmgroup.apmproject.service.MerchantCategoryCodeService - Returning MCC details
+2024-05-04 11:00:06.413 [restartedMain] INFO  com.fdmgroup.apmproject.service.ForeignExchangeCurrencyService - Currency obtained
+2024-05-04 11:00:06.429 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:06.452 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.474 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.496 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.519 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.542 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.564 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.587 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.608 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.630 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.653 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.675 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.696 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.713 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.714 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - 1234-5678-1234-5678 charged for 10.970000000000004 as interest. Balance charged for interest: 109.70000000000003
+2024-05-04 11:00:06.735 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.736 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - 2345-5678-2398-5128 charged for 118.21969999999999 as interest. Balance charged for interest: 1182.197
+2024-05-04 11:00:06.757 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.766 [restartedMain] INFO  com.fdmgroup.apmproject.service.MerchantCategoryCodeService - Returning MCC details
+2024-05-04 11:00:06.766 [restartedMain] INFO  com.fdmgroup.apmproject.service.ForeignExchangeCurrencyService - Currency obtained
+2024-05-04 11:00:06.785 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:06.807 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:06.816 [restartedMain] INFO  com.fdmgroup.apmproject.service.TransactionService - Transaction successfully created
+2024-05-04 11:00:06.838 [restartedMain] INFO  com.fdmgroup.apmproject.service.CreditCardService - Credit Card successfully updated
+2024-05-04 11:00:07.562 [restartedMain] INFO  com.fdmgroup.apmproject.ApmProjectApplication - Started ApmProjectApplication in 9.766 seconds (process running for 10.329)
+2024-05-04 11:00:21.192 [http-nio-8080-exec-3] INFO  com.fdmgroup.apmproject.security.AuthenticationSuccessHandlerSecurity - User has logged in
+2024-05-04 11:00:21.212 [http-nio-8080-exec-2] INFO  com.fdmgroup.apmproject.controller.UserController - Redirecting to dashboard
+2024-05-04 11:00:24.090 [http-nio-8080-exec-3] INFO  com.fdmgroup.apmproject.controller.AccountController - User is redirected to bank account dashboard

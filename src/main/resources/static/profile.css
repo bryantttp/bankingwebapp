@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@keyframes transitionIn {
+	from{
+		opacity:0;
+	}
+	
+	to {
+		opacity:1;
+	}
+}
+
+:root {
+  --darkgreen: #2b6777;
+  --lightblue:#c8d8e4;
+  --white: #ffffff;
+  --lightgrey:#f2f2f2;
+  --lightgreen:#52ab98;
+  --fadedgreen:#4F96A9;
+}
+
+.linkContainerSideBar{
+	height: 100%;
+	top:0;
+	left:0;
+	width: 200px;
+	z-index: 1;
+	overflow-x: hidden;
+    background-color: #2b6777;
+    transition: 0.5s;
+    position: fixed;
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarLinks {
+    flex-grow: 1;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+}
+
+.sidebarHeader{
+	display: flex;
+	justify-content: center;
+}
+
+.sidebarHeader img {
+	width: 150px;
+}
+
+p#sidebarHeader{
+	color: white;
+	padding: 10px;
+}
+
+i {
+	min-width: 25px;
+}
+
+.dashboard{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	text-align: left;
+	padding: 20px;
+	margin-left: 20px;
+}
+
+.profile{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	text-align: left;
+	padding: 20px;
+	margin-left: 20px;
+	background-color: white;
+	animation: transitionIn 0.75s;
+}
+
+.cards{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	text-align: left;
+	padding: 20px;
+	margin-left: 20px;
+}
+
+.accounts{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	text-align: left;
+	padding: 20px;
+	margin-left: 20px;
+}
+
+.logout{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	text-align: center;
+	padding: 20px;
+	margin-top: auto;
+}
+
+a#dashboard {
+	color: white;
+	text-decoration:none;
+	padding: 10px;
+}
+
+a#profile {
+	color: black;
+	text-decoration:none;
+	padding: 10px;
+}
+
+a#accounts {
+	color: white;
+	text-decoration:none;
+	padding: 10px;
+}
+
+a#logout {
+	color: white;
+	text-decoration:none;
+	padding: 10px;
+}
+
+a#cards{
+	color: white;
+	text-decoration:none;
+	padding: 10px;
+}
+
+.mainPage{
+	transition: margin-left .5s;
+	margin-left: 200px;
+	padding: 10px;
+	padding-top: 5px;
+	min-width: 600px;
+}
+
+.below-header {
+	animation: transitionIn 0.75s;
+}
+
+.openSidebar{
+	color: white;
+	border:none;
+	background-color:var(--darkgreen);
+	padding: 15px;
+	border-radius: 15px;
+}
+
+.openSidebar:hover{
+	opacity: 0.6;
+}
+
+header {
+	background-color: var(--darkgreen);
+	padding-top:0px;
+	margin:0px;
+}
+
+#headerIntro {
+    font-size: 25px;
+}
+
+.mainPage{
+	transition: margin-left .5s;
+	margin-left: 200px;
+	padding: 10px;
+	padding-top: 5px;
+}
+
+
+body{
+	font-family: "Nunito Sans", sans-serif;
+	min-width: 500px;
+}
+
+.profile-summary-container {
+	min-width: 600px;
+}
+
+.label-details {
+	font-weight: bold;
+}
+
+.userDetailsList{
+	width: 500px;
+	margin: 100px auto;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: var(--lightgrey);
+	animation:transitionIn 0.75s;
+}
+
+.userDetails{
+	padding: 10px;
+	margin-bottom: 5px;
+	background-color: white;
+	border-radius: 8px;
+}
+
+.profile-summary-container p {
+	margin: 0px;
+}
+
+.link {
+	margin-top: 30px;
+}
+
+.link a {
+	text-decoration: none;
+	color: black;
+}
+
+.link a:hover {
+  text-decoration: underline;
+}
+
+.openSidebar{
+	color: white;
+	border:none;
+	background-color:var(--darkgreen);
+	padding: 15px;
+	border-radius: 15px;
+}
+
+.openSidebar:hover{
+	opacity: 0.6;
+}

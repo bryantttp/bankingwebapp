@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="/card/card-dashboard.css">
+<meta charset="UTF-8">
+<script src="https://kit.fontawesome.com/87c4d319f6.js" crossorigin="anonymous"></script>
+<script th:src="@{/Chart.js}"></script>
+<title>Cards</title>
+</head>
+<body>
+	<div class="linkContainerSideBar" id="sidebar">
+		<div class="sidebarHeader">
+			<p id="sidebarHeader"><img src="/logo-transparent.png"></p>
+		</div>
+		<div class="sidebarLinks">
+			<div class="profile">
+				<a id="profile" th:href="@{/users/{id}(id=${user.userId})}"><i class="fa-solid fa-user"></i>Profile</a>
+			</div>
+			<div class="dashboard">
+				<a id="dashboard" href="/dashboard"><i class="fa-solid fa-clipboard"></i>Dashboard</a>
+			</div>
+			<div class="cards">
+				<a id="cards" href="/userCards"><i class="fa-solid fa-credit-card"></i>Cards</a>
+			</div>
+			<div class="accounts">
+				<a id="accounts" href="/bankaccount/dashboard"><i class="fa-solid fa-briefcase"></i>Accounts</a>
+			</div>
+			<div class="logout">
+				<a id="logout" href="/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+			</div>
+		</div>
+	</div>
+	<div class="mainPage" id="main">
+
+		<header>
+			<button class="openSidebar">☰</button>
+		</header>
+        <div class="below-header">
+		<h1 th:text="'What can we do for you today, ' + ${user.username} + '?'"></h1>
+
+		<div class="button-container">
+			<div class="hasCreditCards"
+					th:if="${not #lists.isEmpty(cards)}">
+				<a id="cardTransaction" href="/creditCard/paybills">Pay</a>
+			</div>
+			<a id="cardTransactions" href="/applyCreditCard">Apply</a>
+		</div>
+		<div class="view-details-button">
+			<h2>Your Credit Cards</h2>
+			<button id="view-card-number" onclick="toggleCardNumber()"><i id="card-eye" class="fa-solid fa-eye" style="font-size:20px;"></i></button>
+		</div>
+	
+		<div class="card-details-container">
+			<div class="card-details" th:each="creditCard : ${cards}">
+				<a id="card-details"
+					th:if="${creditCard.creditCardStatus.statusName == 'Approved'}"
+					href="#"
+					th:onclick="'submitForm(' + ${creditCard.creditCardId} + ')'">
+					<div class="details-card-type">
+						<p th:text="${creditCard.cardType}"></p>
+					</div>
+					<div class="details-card-number">
+						<p class="hide-card-number" id="cardDetails" th:text="'****-****-****-' + ${#strings.substring(creditCard.creditCardNumber, creditCard.creditCardNumber.length() - 4)}"></p>
+						<p style="display:none" class="show-card-number" id="cardDetails" th:text="${creditCard.creditCardNumber}"></p>
+						<p
+							th:if="${creditCard.getCreditCardStatus.getStatusName == 'Approved'}"
+							id="cardDetails" style="color: green"
+							th:text="${creditCard.getCreditCardStatus.getStatusName}"></p>
+						<p
+							th:if="${creditCard.getCreditCardStatus.getStatusName != 'Approved'}"
+							id="cardDetails" style="color: red"
+							th:text="${creditCard.getCreditCardStatus.getStatusName}"></p>
+					</div>
+					<div class="details-card-amount">
+						<label class="detail-label">Outstanding Balance </label>
+						<p th:if="${creditCard.amountUsed != 0}" id="cardDetails"
+							th:text="'$' + ${#numbers.formatDecimal(creditCard.getAmountUsed,0,'COMMA',2,'POINT')}"></p>
+						<p th:if="${creditCard.amountUsed == 0}" id="cardDetails"
+							th:text="'$0.00'"></p>
+						<label class="detail-label">Statement Balance </label>
+						<p th:if="${creditCard.monthlyBalance != 0}" id="cardDetails"
+							th:text="'$' + ${#numbers.formatDecimal(creditCard.getMonthlyBalance,0,'COMMA',2,'POINT')}"></p>
+						<p th:if="${creditCard.monthlyBalance == 0}" id="cardDetails"
+							th:text="'$0.00'"></p>
+						<label class="detail-label">Available Balance</label>
+                         <p th:if="${creditCard.cardLimit-creditCard.getAmountUsed != 0}" id="cardDetails" th:text="'$' + ${#numbers.formatDecimal((creditCard.cardLimit-creditCard.getAmountUsed),0,'COMMA',2,'POINT')}"></p>
+                         <p th:if="${creditCard.cardLimit-creditCard.getAmountUsed == 0}" id="cardDetails" th:text="'$0.00'"></p>
+					</div>
+
+				</a>
+				<div th:if="${creditCard.creditCardStatus.statusName != 'Approved'}">
+					<div class="details-card-type">
+						<p th:text="${creditCard.cardType}"></p>
+					</div>
+					<div class="details-card-number">
+						<p
+							th:if="${creditCard.getCreditCardStatus.getStatusName == 'Approved'}"
+							id="cardDetails" style="color: green"
+							th:text="${creditCard.getCreditCardStatus.getStatusName}"></p>
+						<p
+							th:if="${creditCard.getCreditCardStatus.getStatusName != 'Approved'}"
+							id="cardDetails" style="color: red"
+							th:text="${creditCard.getCreditCardStatus.getStatusName}"></p>
+					</div>
+				</div>
+
+			</div>
+          </div>
+
+		</div>
+
+		<form id="viewTransactionsForm" th:action="@{/viewTransactions}"
+			method="post" style="display: none;">
+			<input type="hidden" id="creditCardIdInput" name="creditCardId">
+		</form>
+
+	</div>
+	<script>
+			let menuOpen = false;
+			const sidebar = document.querySelector('.linkContainerSideBar');
+			const mainpage = document.querySelector('.mainPage');
+			const button = document.querySelector('.openSidebar')
+			
+			button.addEventListener('click', () => {menuOpen = !menuOpen;
+			mainpage.style.marginLeft = menuOpen ? '0' : '200px';
+			sidebar.style.width = menuOpen ? '0' : '200px';})
+			
+			function submitForm(creditCardId) {
+					    document.getElementById("creditCardIdInput").value = creditCardId;
+					    document.getElementById("viewTransactionsForm").submit();
+					}
+			
+			function toggleCardNumber(button){
+				
+				var hiddenCardNumbers = document.querySelectorAll('.hide-card-number');
+				var shownCardNumbers = document.querySelectorAll('.show-card-number');
+				const eyeIcon = document.getElementById('card-eye');
+				
+				for (var i = 0; i < hiddenCardNumbers.length; i++){
+					if (shownCardNumbers[i].style.display === 'none'){
+						shownCardNumbers[i].style.display = 'block';
+						hiddenCardNumbers[i].style.display = 'none';
+					}
+					else {
+						shownCardNumbers[i].style.display = 'none';
+						hiddenCardNumbers[i].style.display = 'block';
+					}
+				}	
+			    if (eyeIcon.classList.contains('fa-eye')) {
+		            eyeIcon.classList.remove('fa-eye');
+		            eyeIcon.classList.add('fa-eye-slash');
+		        } else {
+		            eyeIcon.classList.remove('fa-eye-slash');
+		            eyeIcon.classList.add('fa-eye');
+		        }
+			}
+		</script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@keyframes transitionIn {
+	from{
+		opacity:0;
+	}
+	
+	to {
+		opacity:1;
+	}
+}
+
+:root {
+  --darkgreen: #2b6777;
+  --lightblue:#c8d8e4;
+  --white: #ffffff;
+  --lightgrey:#f2f2f2;
+  --lightgreen:#52ab98;
+  --fadedgreen:#4F96A9;
+}
+
+.linkContainerSideBar{
+	height: 100%;
+	top:0;
+	left:0;
+	width: 200px;
+	z-index: 1;
+	overflow-x: hidden;
+    background-color: #2b6777;
+    transition: 0.5s;
+    position: fixed;
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarLinks {
+    flex-grow: 1;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+}
+
+.sidebarHeader{
+	display: flex;
+	justify-content: center;
+}
+
+.sidebarHeader img {
+	width: 150px;
+}
+
+p#sidebarHeader{
+	color: white;
+	padding: 10px;
+}
+
+i {
+	min-width: 25px;
+}
+
+.dashboard{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	text-align: left;
+	padding: 20px;
+	margin-left: 20px;
+	background-color: white;
+	animation: transitionIn 0.75s;
+}
+
+.profile{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	text-align: left;
+	padding: 20px;
+	margin-left: 20px;
+}
+
+.cards{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	text-align: left;
+	padding: 20px;
+	margin-left: 20px;
+}
+
+.accounts{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	text-align: left;
+	padding: 20px;
+	margin-left: 20px;
+}
+
+.logout{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	text-align: center;
+	padding: 20px;
+	margin-top: auto;
+}
+
+a#dashboard {
+	color: black;
+	text-decoration:none;
+	padding: 10px;
+}
+
+a#profile {
+	color: white;
+	text-decoration:none;
+	padding: 10px;
+}
+
+a#accounts {
+	color: white;
+	text-decoration:none;
+	padding: 10px;
+}
+
+a#logout {
+	color: white;
+	text-decoration:none;
+	padding: 10px;
+}
+
+a#cards{
+	color: white;
+	text-decoration:none;
+	padding: 10px;
+}
+
+.mainPage{
+	transition: margin-left .5s;
+	margin-left: 200px;
+	padding: 10px;
+	padding-top: 5px;
+	min-width: 600px;
+}
+
+.below-header {
+	animation: transitionIn 0.75s;
+}
+
+.openSidebar{
+	color: white;
+	border:none;
+	background-color:var(--darkgreen);
+	padding: 15px;
+	border-radius: 15px;
+}
+
+.openSidebar:hover{
+	opacity: 0.6;
+}
+
+header {
+	background-color: var(--darkgreen);
+	padding-top:0px;
+	margin:0px;
+}
+
+#headerIntro {
+    font-size: 25px;
+}
+
+body{
+	font-family: "Nunito Sans", sans-serif;
+	min-width: 500px;
+}
+
+.summary-container {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap:2px;   
+}
+
+.view-details-button {
+	display: flex;
+	justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+h4 {
+	margin: 0;
+}
+
+.view-details-button button{
+	text-align: right;
+	border: none;
+    outline: none;
+    background-color: var(--lightgrey);
+    min-width: 40px;
+}
+
+.accounts-summary,
+.cards-summary {
+    flex: 1 1 35%;
+    min-width: 300px;
+    padding: 20px;
+  	border-radius: 10px;
+  	background-color: var(--lightgrey);
+}
+
+.account-details, .card-details {
+    display: flex;
+    text-align: left;
+    width: 100%;
+    min-height: 110px;
+    flex-direction: column;
+    background-color: var(--white);
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.details-account-name, 
+.details-account-number,
+.details-card-type,
+.details-card-number{
+	padding-left: 15px;
+} 
+
+
+.details-account-name p,
+.details-card-type p {
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+
+.details-account-number p,
+.details-card-number p {
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+.detail-label {
+    font-weight: bold;
+}
+
+.details-card-limit p,
+.details-card-amount p,
+.details-account-balance p {
+    display: inline;
+}
+
+.details-card-limit,
+.details-card-amount, 
+.details-account-balance {
+    text-align: right;
+    padding-right: 15px;
+}
+
+h4 {
+	margin-top: 0px;
+}
+
+.account-details:hover, 
+.card-details:hover {
+	background-color: var(--lightblue);
+}

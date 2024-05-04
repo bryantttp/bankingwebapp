@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="/account/create-bank-account.css">
+<meta charset="UTF-8">
+<script src="https://kit.fontawesome.com/87c4d319f6.js" crossorigin="anonymous"></script>
+<script th:src="@{/dashboardJSLib.js}"></script>
+<script th:src="@{/Chart.js}"></script>
+<title>Bank Application Application</title>
+</head>
+<body>
+	<div class="linkContainerSideBar" id="sidebar">
+		<div class="sidebarHeader">
+			<p id="sidebarHeader"><img src="/logo-transparent.png"></p>
+		</div>
+		<div class="sidebarLinks">
+			<div class="profile">
+				<a id="profile" th:href="@{/users/{id}(id=${user.userId})}"><i class="fa-solid fa-user"></i>Profile</a>
+			</div>
+			<div class="dashboard">
+				<a id="dashboard" href="/dashboard"><i class="fa-solid fa-clipboard"></i>Dashboard</a>
+			</div>
+			<div class="cards">
+				<a id="cards" href="/userCards"><i class="fa-solid fa-credit-card"></i>Cards</a>
+			</div>
+			<div class="accounts">
+				<a id="accounts" href="/bankaccount/dashboard"><i class="fa-solid fa-briefcase"></i>Accounts</a>
+			</div>
+			<div class="logout">
+				<a id="logout" href="/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+			</div>
+		</div>
+	</div>
+	<div class="mainPage" id="main">
+		<header>
+           <button class="openSidebar">☰</button>
+        </header>
+            	
+		
+		
+		<div class="create-account-form-container">
+                <h1>Create Bank Account</h1>
+				<form class="create-account-form" method="post" action="/bankaccount/create">
+                    <div class="account-name">
+                      <label class="input-label">Account Name </label>
+  					  <input type="text" name="accountName">
+                    </div>
+                    
+                    <div class="initial-deposit">
+                    <label class="input-label">Initial Deposit </label>
+					<input type="number" name="initialDeposit" min = "0" step="0.01" placeholder= "Amount in SGD" required> 
+					</div>
+                    
+                    <div class="submit-button">
+                      <input id="submitButton" type="submit" value="Submit">
+					</div>
+          
+					<div class="error-message" th:if="${param.InsufficientInitialDepositError}">
+			            <p style="color: red;">Could not create account with initial deposit smaller than 5000. Please check your initial deposit.</p>
+			        </div>
+			        <div class="error-message" th:if="${param.NoAccountNameError}">
+			            <p style="color: red;">Could not create account without account name. Please input your account name.</p>
+			        </div>
+				</form>
+		</div>
+	</div>
+	<script>
+		let menuOpen = false;
+		const sidebar = document.querySelector('.linkContainerSideBar');
+		const mainpage = document.querySelector('.mainPage');
+		const button = document.querySelector('.openSidebar')
+		
+		button.addEventListener('click', () => {menuOpen = !menuOpen;
+		mainpage.style.marginLeft = menuOpen ? '0' : '200px';
+		sidebar.style.width = menuOpen ? '0' : '200px';})
+	</script>
+</body>
+</html>

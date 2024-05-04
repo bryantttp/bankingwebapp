@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<link rel="stylesheet" href="/admin/admin-transactions.css">
+		<meta charset="UTF-8">
+		<script src="https://kit.fontawesome.com/87c4d319f6.js" crossorigin="anonymous"></script>
+		<title>Transactions</title>
+	</head>
+	<body>
+		<div class="linkContainerSideBar" id="sidebar">
+			<div class="sidebarHeader">
+				<p id="sidebarHeader" ><img src="/logo-transparent.png"></p>
+			</div>
+			<div class="sidebarLinks">
+				<div class="dashboard">
+					<a id="dashboard" href="/admin/dashboard"><i class="fa-solid fa-clipboard"></i>Dashboard</a>
+				</div>
+				<div class="user">
+					<a id="user" href="/admin/users"><i class="fa-solid fa-user"></i>Users</a>
+				</div>
+				<div class="transactions">
+					<a class="transactionsText" id="transactions" href="/admin/transactions"><i class="fa-solid fa-briefcase"></i>Transactions</a>
+				</div>
+				<div class="logout">
+					<a id="logout" href="/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+				</div>
+				</div>
+			</div>
+		</div>
+		<div class="mainPage" id="main">
+			<header>
+				<button class="openSidebar">☰</button>
+			</header>
+			<h1>Transactions</h1>
+			<div class="allTransactions">
+				<div class="transactionTable">
+					<form method="post">
+						<label for="month">Month:</label> 
+						<input type="month" id="month" name="month">
+						<select name="pickedUser">
+						 	<option value="" disabled selected hidden>Select Username</option>
+						    <option th:each="pickedUser : ${users}" th:if="${pickedUser.getRole != 'ROLE_ADMIN'}" th:value="${pickedUser.getUsername}" th:text="${pickedUser.getUsername}"></option>
+						 </select>
+						 <select name="pickedType">
+						 	<option value="" disabled selected hidden>Select Transaction Source</option>
+						 	<option value="card">Credit Card</option>
+						 	<option value="account">Account</option>
+						 </select>
+						<button type="submit">Filter</button>
+					</form>
+					<div>
+						<div class="secondary-content-container">
+							<table>
+								<thead>
+									<tr>
+										<th>Category</th>
+										<th>Date</th>
+										<th>Time</th>
+										<th>User</th>
+										<th>Credit Card Number</th>
+										<th>Account</th>
+										<th>Recipient</th>
+										<th>Amount</th>
+										<th>Currency</th>
+										<th>Transaction Type</th>
+										<th>CashBack</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="transaction : ${transactions}">
+										<td th:if="${transaction.getTransactionCreditCard != null}" th:text="${transaction.transactionMerchantCategoryCode.getMerchantCategory}"></td>
+										<td th:if="${transaction.getTransactionAccount != null}" th:text="${transaction.transactionType}"></td>
+										<td th:text="${#strings.substring(transaction.transactionDate, 0, 10)}"></td>
+										<td th:text="${#strings.substring(transaction.transactionDate, 11, 19)}"></td>
+										<td th:if="${transaction.getTransactionCreditCard != null}" th:text="${transaction.getTransactionCreditCard.getCreditCardUser.getUsername}"></td>
+										<td th:if="${transaction.getTransactionAccount != null}" th:text="${transaction.getTransactionAccount.getAccountUser.getUsername}"></td>
+										<td th:if="${transaction.getTransactionCreditCard != null}" th:text="${transaction.getTransactionCreditCard.getCreditCardNumber}"></td>
+										<td th:text="'-'"></td>
+										<td th:if="${transaction.getTransactionAccount != null}" th:text="${transaction.getTransactionAccount.getAccountNumber}"></td>
+										<td th:if="${transaction.getRecipientAccount != null}" th:text="${transaction.getRecipientAccount.getAccountNumber}"></td>
+										<td th:if="${transaction.getRecipientAccount == null}" th:text="'-'"></td>
+										<td th:text= "'$' + ${#numbers.formatDecimal(transaction.transactionAmount,0,'COMMA',2,'POINT')}"></td>
+										<td th:if="${transaction.transactionCurrency != null}" th:text="${transaction.transactionCurrency.getName}"></td>
+										<td th:if="${transaction.transactionCurrency == null}" th:text="'-'"></td>
+										<td th:text="${transaction.transactionType}"></td>
+										<td th:text="'$' + ${#numbers.formatDecimal(transaction.cashback,1,'COMMA',2,'POINT')}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			let menuOpen = false;
+			const sidebar = document.querySelector('.linkContainerSideBar');
+			const mainpage = document.querySelector('.mainPage');
+			const button = document.querySelector('.openSidebar')
+			
+			button.addEventListener('click', () => {menuOpen = !menuOpen;
+			mainpage.style.marginLeft = menuOpen ? '0' : '200px';
+			sidebar.style.width = menuOpen ? '0' : '200px';})
+		</script>
+	</body>
+</html>

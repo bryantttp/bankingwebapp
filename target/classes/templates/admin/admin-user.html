@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+
+	<head>
+		<link rel="stylesheet" href="/admin/admin-user.css">
+		<meta charset="UTF-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://kit.fontawesome.com/87c4d319f6.js" crossorigin="anonymous"></script>
+		<title>User Dashboard</title>
+	</head>
+	
+	<body>
+		<!-- side bar -->
+		<div class="linkContainerSideBar" id="sidebar">
+			<div class="sidebarHeader">
+				<p id="sidebarHeader" ><img src="/logo-transparent.png"></p>
+			</div>
+			<div class="sidebarLinks">
+				<div class="dashboard">
+					<a id="dashboard" href="/admin/dashboard"><i class="fa-solid fa-clipboard"></i>Dashboard</a>
+				</div>
+				<div class="user">
+					<a id="user" href="/admin/users"><i class="fa-solid fa-user"></i>Users</a>
+				</div>
+				<div class="transactions">
+					<a class="transactionsText" id="transactions" href="/admin/transactions"><i class="fa-solid fa-briefcase"></i>Transactions</a>
+				</div>
+				<div class="logout">
+					<a id="logout" href="/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+				</div>
+			</div>
+		</div>
+		
+		
+		<!-- users -->
+		<div class="mainPage" id="main">
+			<header>
+				<button class="openSidebar">☰</button>
+			</header>
+			<h1 th:text="'Hello ' + ${user.username} + ','"></h1>
+			<p id="headerIntro"> This is for you, at a glance: </p>	
+			
+		
+		
+<table>
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>No. of Pending Bank Accounts</th>
+            <th>Manage Bank Accounts</th>
+            <th>No. of Pending Credit Cards</th>
+            <th>Manage Credit Cards</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.userId}"></td>
+            <td th:text="${user.username}"></td>
+            <td>
+                <span th:text="${user.accounts.?[accountStatus.statusName == 'Pending'].size()}"></span>
+            </td>
+            <td>
+                <form method="get" action="/admin/accounts">
+                    <input type="hidden" name="userId" th:value="${user.userId}" />
+                    <button class="manage-button"
+                        th:class="${user.accounts.?[accountStatus.statusName == 'Pending'].size() == 0}
+                                    ? 'manage-button-green' : 'manage-button-red'"
+                        type="submit">Manage</button>
+                </form>
+            </td>
+            <td>
+                <span th:text="${user.creditCards.?[creditCardStatus.statusName == 'Pending'].size()}"></span>
+            </td>
+            
+            <td>
+                <form method="get" action="/admin/creditcards">
+                    <input type="hidden" name="userId" th:value="${user.userId}" />
+                    <button class="manage-button"
+                        th:class="${user.creditCards.?[creditCardStatus.statusName == 'Pending'].size() == 0}
+                                    ? 'manage-button-green' : 'manage-button-red'"
+                        type="submit">Manage</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+			
+			
+		</div>
+		
+		
+		<script>
+			let menuOpen = false;
+			const sidebar = document.querySelector('.linkContainerSideBar');
+			const mainpage = document.querySelector('.mainPage');
+			const button = document.querySelector('.openSidebar')
+			
+			button.addEventListener('click', () => {menuOpen = !menuOpen;
+			mainpage.style.marginLeft = menuOpen ? '0' : '200px';
+			sidebar.style.width = menuOpen ? '0' : '200px';})
+		</script>
+	</body>	
+</html>

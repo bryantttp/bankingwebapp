@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<link rel="stylesheet" href="/card/pay-bills.css">
+		<meta charset="UTF-8">
+		<script src="https://kit.fontawesome.com/87c4d319f6.js" crossorigin="anonymous"></script>
+		<script th:src="@{/Chart.js}"></script>
+		<title>Pay Bills</title>
+	</head>
+	<body>
+		<div class="linkContainerSideBar" id="sidebar">
+			<div class="sidebarHeader">
+				<p id="sidebarHeader" ><img src="/logo-transparent.png"></p>
+			</div>
+			<div class="sidebarLinks">
+				<div class="profile">
+					<a id="profile" th:href="@{/users/{id}(id=${user.userId})}"><i class="fa-solid fa-user"></i>Profile</a>
+				</div>
+				<div class="dashboard">
+					<a id="dashboard" href="/dashboard"><i class="fa-solid fa-clipboard"></i>Dashboard</a>
+				</div>
+				<div class="cards">
+					<a class="cards" id="cards" href="/userCards"><i class="fa-solid fa-credit-card"></i>Cards</a>
+				</div>
+				<div class="accounts">
+					<a class="accounts" id="accounts" href="/bankaccount/dashboard"><i class="fa-solid fa-briefcase"></i>Accounts</a>
+				</div>
+				<div class="logout">
+					<a id="logout" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+				</div>
+			</div>
+		</div>
+		<div class="mainPage" id="main">
+			<header>
+				<button class="openSidebar">☰</button>
+			</header>
+			
+			<div class="card-payment-container"> 
+				<h2> Bill Summary </h2>
+				<div class="bills-summary">
+					<table>
+					    <thead>
+					        <tr>
+					            <th>Card</th>
+                                <th>Card Number</th>
+					            <th>Bill Balance</th>
+					        </tr>
+					    </thead>
+					    <tbody>
+					        <tr th:each="creditCard : ${CcList}" th:if="${creditCard.creditCardStatus.statusName == 'Approved'}">
+					            <td class="table-text" th:text="${creditCard.cardType}" rowspan="1"></td>
+                                <td th:text="${creditCard.creditCardNumber}" rowspan="1"></td>
+					            <td>
+                                  <table class="nested-table">
+                                      <tr><td>
+                                          <p th:if="${creditCard.monthlyBalance != 0}" th:text="'Statement Balance: ' + '$' + ${#numbers.formatDecimal(creditCard.getMonthlyBalance,0,'COMMA',2,'POINT')}"></p>
+                                          <p th:if="${creditCard.monthlyBalance == 0}" th:text="'Statement Balance: ' + '$' + '$0.00'"></p>
+                                        </td></tr>
+                                      <tr><td>
+                                    <p th:if="${creditCard.amountUsed != 0}" th:text="'Outstanding Balance: ' + '$' + ${#numbers.formatDecimal(creditCard.getAmountUsed,0,'COMMA',2,'POINT')}"></p>
+                                    <p th:if="${creditCard.amountUsed == 0}" th:text="'Outstanding Balance: ' + '$0.00'"></p>
+                                  </td></tr>
+                                      <tr><td>
+                                    <p th:if="${creditCard.minBalancePaid > 0}" th:text="'Minimum Balance: ' + '$' + ${#numbers.formatDecimal(creditCard.getMinBalancePaid,0,'COMMA',2,'POINT')}"></p>
+                                    <p th:if="${creditCard.minBalancePaid <= 0}" th:text="'Minimum Balance: ' + '$0.00'"></p>
+                                  </td></tr>
+                                  </table>
+                                  
+                                  
+                                  
+                                </td>
+					        </tr>
+					        
+					    </tbody>
+					</table>
+					
+				</div>
+				<h2> Pay </h2>  
+				<div class="form"> 
+					<form id="paymentForm" method="post" action="/creditCard/paybills">
+						<div class="pay-from-to-container">
+                            <div class="bank-account">
+    							<label class="input-label" for="account">From: </label>
+    							<select name="accountId">
+    							    <option value=0 >Select Bank Account...</option>
+    							    <option th:each="account : ${AccountList}" th:if="${account.accountStatus.statusName != 'Pending'}" th:value="${account.accountId}" th:text="${account.accountName} + '   ' + ${account.accountNumber}"></option>
+    							</select>
+    						</div>						
+    						<div class="credit-card">
+    							<label class="input-label" for="creditcard">To: </label>
+    							<select id="creditCardSelect" name="creditCardId">
+    							    <option value=0 >Select Credit Card...</option>
+    							    <option th:each="creditCard : ${CcList}" th:if="${creditCard.creditCardStatus.statusName != 'Pending'}" th:value="${creditCard.creditCardId}" th:text="${creditCard.cardType} + '   ' + ${creditCard.creditCardNumber}"></option>
+    							</select>					
+    						</div>
+                        </div>
+                        
+                        <div class="pay-methods-container">
+                            <label class="input-label" for="account">Choose Payment Amount:</label>
+                            <input type="hidden" id="balanceType" name="balanceType">
+                            <div class="submit-buttons">
+                                <button id="paymentButton" type="button" onclick="getBalance('minimum')">Minimum Balance</button>
+                                <button id="paymentButton" type="button" onclick="getBalance('current')">Outstanding Balance</button>
+                                <button id="paymentButton" type="button" onclick="getBalance('statement')">Statement Balance</button>
+                            </div>
+                            <h3> OR </h3>
+    						<div class="payment-amount">
+    							<input type="number" name="payment" placeholder="Payment Amount" min = "0" step="0.01" required>
+                                <button id="paymentButton" type="button" onclick="getBalance('custom')">Custom Balance</button>
+    						</div>
+    						
+						</div>
+					    <div class="error-message" th:if="${param.NotChooseAccountError}">
+			            <p style="color: red;">Could not pay bill without a bank account. Please select a bank account.</p>
+			            </div>
+			            <div class="error-message" th:if="${param.NotChooseCreditCardError}">
+			            <p style="color: red;">Which credit card do you want to pay?. Please select a credit card.</p>
+			            
+			        </div>
+					</form>
+				</div>	
+			</div>		
+		</div>
+		<script>
+		let menuOpen = false;
+		const sidebar = document.querySelector('.linkContainerSideBar');
+		const mainpage = document.querySelector('.mainPage');
+		const button = document.querySelector('.openSidebar')
+		
+		button.addEventListener('click', () => {menuOpen = !menuOpen;
+		mainpage.style.marginLeft = menuOpen ? '0' : '200px';
+		sidebar.style.width = menuOpen ? '0' : '200px';})
+			
+			function getBalance(balanceType) {
+		        document.getElementById("balanceType").value = balanceType;
+		        // Submit the form
+		        document.getElementById("paymentForm").submit();
+			}
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="/admin/admin-account.css">
+		<script src="https://kit.fontawesome.com/87c4d319f6.js" crossorigin="anonymous"></script>
+		<script th:src="@{/Chart.js}"></script>
+		<title>Account Dashboard Page</title>
+	</head>
+	<body>
+		<div class="linkContainerSideBar" id="sidebar">
+			<div class="sidebarHeader">
+				<p id="sidebarHeader" ><img src="/logo-transparent.png"></p>
+			</div>
+			<div class="sidebarLinks">
+				<div class="dashboard">
+					<a id="dashboard" href="/admin/dashboard"><i class="fa-solid fa-clipboard"></i>Dashboard</a>
+				</div>
+				<div class="user">
+					<a id="user" href="/admin/users"><i class="fa-solid fa-user"></i>Users</a>
+				</div>
+				<div class="transactions">
+					<a class="transactionsText" id="transactions" href="/admin/transactions"><i class="fa-solid fa-briefcase"></i>Transactions</a>
+				</div>
+				<div class="logout">
+					<a id="logout" href="/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+				</div>
+			</div>
+		</div>
+		<div class="mainPage" id="main">
+			<header>
+				<button class="openSidebar">☰</button>		
+			</header>
+			<h2 th:text="${user.getUsername} + '\'s Bank Accounts'"></h2>
+			
+				<div class="accountDetails"
+					th:each="account : ${requiredAccounts}">
+					<div class="accountDetails2">
+						<div id="accountDetails"> 
+						<span th:text=" 'Account Name: ' + ${account.accountName}"></span> <br />
+								<span th:text=" 'Account Number: ' + ${account.accountNumber}"></span>
+								<br /> <span th:text=" 'Account Balance: $' + ${account.balance}"></span>
+								<br /> <span
+								th:text=" 'Account Status: ' "></span>
+								<span th:if="${account.accountStatus.statusName == 'Approved'}" style="color:green" th:text="${account.accountStatus.statusName}"></span>
+								<span th:if="${account.accountStatus.statusName != 'Approved'}" style="color:red" th:text="${account.accountStatus.statusName}"></span>
+								<br />
+					    <form method="post" action="/admin/bankaccountStatus">
+					        <input type="hidden" name="accountNumber" th:value="${account.accountNumber}" />
+					        <label>modify status:</label>
+							<select name="status">
+					          <option value="Approved">Approved</option>
+					          <option value="Pending">Pending</option>
+					          <option value="Disabled">Disabled</option>
+					        </select>
+					        <button type="submit" >update</button>
+					    </form>
+						</div> 
+					</div>
+				
+			</div>
+			
+			
+			
+		</div>
+		
+
+		<script>
+			let menuOpen = false;
+			const sidebar = document.querySelector('.linkContainerSideBar');
+			const mainpage = document.querySelector('.mainPage');
+			const button = document.querySelector('.openSidebar')
+			
+			button.addEventListener('click', () => {menuOpen = !menuOpen;
+			mainpage.style.marginLeft = menuOpen ? '0' : '200px';
+			sidebar.style.width = menuOpen ? '0' : '200px';})
+		</script>
+	</body>
+</html>

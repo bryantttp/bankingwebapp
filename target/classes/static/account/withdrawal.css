@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@keyframes transitionIn {
+	from{
+		opacity:0;
+	}
+	
+	to {
+		opacity:1;
+	}
+}
+
+:root {
+  --darkgreen: #2b6777;
+  --lightblue:#c8d8e4;
+  --white: #ffffff;
+  --lightgrey:#f2f2f2;
+  --lightgreen:#52ab98;
+  --fadedgreen:#4F96A9;
+}
+
+.linkContainerSideBar{
+	height: 100%;
+	top:0;
+	left:0;
+	width: 200px;
+	z-index: 1;
+	overflow-x: hidden;
+    background-color: #2b6777;
+    transition: 0.5s;
+    position: fixed;
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarLinks {
+    flex-grow: 1;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+}
+
+.sidebarHeader{
+	display: flex;
+	justify-content: center;
+}
+
+.sidebarHeader img {
+	width: 150px;
+}
+
+p#sidebarHeader{
+	color: white;
+	padding: 10px;
+}
+
+i {
+	min-width: 25px;
+}
+
+.dashboard{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	text-align: left;
+	padding: 20px;
+	margin-left: 20px;
+	
+}
+
+.profile{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	text-align: left;
+	padding: 20px;
+	margin-left: 20px;
+}
+
+.cards{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	text-align: left;
+	padding: 20px;
+	margin-left: 20px;
+}
+
+.accounts{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	text-align: left;
+	padding: 20px;
+	margin-left: 20px;
+	background-color: white;
+}
+
+.logout{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	text-align: center;
+	padding: 20px;
+	margin-top: auto;
+}
+
+a#dashboard {
+	color: white;
+	text-decoration:none;
+	padding: 10px;
+}
+
+a#profile {
+	color: white;
+	text-decoration:none;
+	padding: 10px;
+}
+
+a#accounts {
+	color: black;
+	text-decoration:none;
+	padding: 10px;
+}
+
+a#logout {
+	color: white;
+	text-decoration:none;
+	padding: 10px;
+}
+
+a#cards{
+	color: white; 
+	text-decoration:none;
+	padding: 10px;
+}
+
+.mainPage{
+	transition: margin-left .5s;
+	margin-left: 200px;
+	padding: 10px;
+	padding-top: 5px;
+	min-width: 600px;
+}
+
+.below-header {
+	animation: transitionIn 0.75s;
+}
+
+.openSidebar{
+	color: white;
+	border:none;
+	background-color: var(--darkgreen);
+	padding: 15px;
+	border-radius: 15px;
+}
+
+.openSidebar:hover{
+	opacity: 0.6;
+}
+
+body{
+	font-family: "Nunito Sans", sans-serif;
+	min-width: 500px;
+}
+
+header {
+	background-color: var(--darkgreen);
+	padding-top:0px;
+	margin:0px;
+	min-width: 600px;
+}
+
+.withdraw-form-container{
+	width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.select-account {
+	padding: 20px;
+	background-color: var(--lightgrey);
+	border-radius: 8px;
+	margin-bottom: 10px;
+	min-width: 600px;
+}
+
+.amount-currency-container{
+	display: grid;
+	background-color: var(--lightgrey);
+	border-radius: 8px;
+    grid-template-columns: 2fr 1fr;
+    padding: 20px;
+	margin-bottom: 10px;
+	min-width: 600px;
+}
+
+.select-account, 
+.select-currency,
+.withdraw-amount {
+	margin-bottom: 15px;
+}
+
+select {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 16px;
+    color: black;
+    font-family: "Nunito Sans", sans-serif;
+    appearance: none;
+}
+
+select option {
+	color: black;
+}
+
+select:focus {
+    border-color: #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.withdraw-amount input[type="number"] {
+	width: calc(100% - 40px);
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 16px;
+    color: black;
+    font-family: "Nunito Sans", sans-serif;
+    appearance: none;
+    margin-bottom: 10px;
+}
+
+
+.input-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+}
+
+.submit-button {
+	text-align: center;
+	min-width: 600px;
+}
+
+#submitButton {
+	font-family: "Nunito Sans", sans-serif;
+    background-color: var(--darkgreen);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    width: 100%;
+    font-size: 15px;
+}
+
+#submitButton:hover {
+    background-color: var(--lightblue);
+    color: black;
+    font-weight: bold;
+}

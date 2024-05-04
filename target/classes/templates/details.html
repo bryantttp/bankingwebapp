@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<link rel="stylesheet" href="/details.css">
+		<meta charset="UTF-8">
+		<script src="https://kit.fontawesome.com/87c4d319f6.js" crossorigin="anonymous"></script>
+		<script th:src="@{/Chart.js}"></script>
+		<title>Edit Details</title>
+	</head>
+	<body>
+		<div class="linkContainerSideBar" id="sidebar">
+				<div class="sidebarHeader">
+					<p id="sidebarHeader" ><img src="/logo-transparent.png"></p>
+				</div>
+				<div class="sidebarLinks">
+					<div class="profile">
+						<a id="profile" th:href="@{/users/{id}(id=${user.userId})}"><i class="fa-solid fa-user"></i>Profile</a>
+					</div>
+					<div class="dashboard">
+						<a id="dashboard" href="/dashboard"><i class="fa-solid fa-clipboard"></i>Dashboard</a>
+					</div>
+					<div class="cards">
+						<a id="cards" href="/userCards"><i class="fa-solid fa-credit-card"></i>Cards</a>
+					</div>
+					<div class="accounts">
+						<a id="accounts" href="/bankaccount/dashboard"><i class="fa-solid fa-briefcase"></i>Accounts</a>
+					</div>
+					<div class="logout">
+						<a id="logout" href="/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+				</div>
+			</div>
+		</div>
+		<div class="mainPage" id="main">
+			<header>
+				<button class="openSidebar">☰</button>
+			</header>
+			<div class="form">
+				<form method="post" th:object="${customer}">
+					<div class="form-group">
+						<input type="text" name="address" placeholder="Address">
+					</div>
+					<div class="form-group">
+						<input type="text" name="firstName" placeholder="First Name">
+					</div>
+					<div class="form-group">
+						<input type="text" name="lastName" placeholder="Last Name">
+					</div>
+					<div class="submitButton">
+						<input type="submit" value="Update">
+					</div>
+				</form>
+			</div>
+		</div>
+		<script>
+			let menuOpen = false;
+			const sidebar = document.querySelector('.linkContainerSideBar');
+			const mainpage = document.querySelector('.mainPage');
+			const button = document.querySelector('.openSidebar')
+			
+			button.addEventListener('click', () => {menuOpen = !menuOpen;
+			mainpage.style.marginLeft = menuOpen ? '0' : '200px';
+			sidebar.style.width = menuOpen ? '0' : '200px';})
+		</script>
+	</body>
+</html>

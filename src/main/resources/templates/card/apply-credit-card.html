@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<link rel="stylesheet" href="/card/apply-credit-card.css">
+		<meta charset="UTF-8">
+		<script src="https://kit.fontawesome.com/87c4d319f6.js" crossorigin="anonymous"></script>
+		<script th:src="@{/Chart.js}"></script>
+		<title>Credit Card Application</title>
+	</head>
+	<body>
+		<div class="linkContainerSideBar" id="sidebar">
+			<div class="sidebarHeader">
+				<p id="sidebarHeader" ><img src="/logo-transparent.png"></p>
+			</div>
+			<div class="sidebarLinks">
+				<div class="profile">
+					<a id="profile" th:href="@{/users/{id}(id=${user.userId})}"> <i class="fa-solid fa-user"></i>Profile</a>
+				</div>
+				<div class="dashboard">
+					<a id="dashboard" href="/dashboard"><i class="fa-solid fa-clipboard"></i>Dashboard</a>
+				</div>
+				<div class="cards">
+					<a id="cards" href="/userCards"><i class="fa-solid fa-credit-card"></i>Cards</a>
+				</div>
+				<div class="accounts">
+					<a id="accounts" href="/bankaccount/dashboard"><i class="fa-solid fa-briefcase"></i>Accounts</a>
+				</div>
+				<div class="logout">
+					<a id="logout" href="/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+				</div>
+			</div>
+		</div>
+		<div class="mainPage" id="main">
+			<header>
+				<button class="openSidebar">☰</button>
+			</header>
+      
+            <div class="below-header">
+			<h1 th:text="'Hi ' + ${session.loggedUser.username} + ', ready to join the family?'"></h1>
+			
+			<h2>Credit Card Application</h2>
+			
+			<div class="application-form-container">   
+				<div class="form"> 
+		           	<form method="post" action="applyCreditCard" class="applyCreditCard">	
+		           		<div class="monthly-salary">
+		           			<label class="input-label">Monthly Salary</label>
+							<input type="number" name="monthlySalary" placeholder="Enter monthly salary" min="0" step="1">
+		           		</div>
+						<div class="select-card">
+							<label class="input-label">Card of Choice:</label>
+							<select name="cardType">
+							<option value="" disabled selected hidden>Select Card...</option>
+						    <option value="Ultimate Cashback Card">Ultimate Cashback Card</option>
+						    <option value="SwipeSmart Platinum Card">SwipeSmart Platinum Card</option>
+						  	</select>
+						</div>
+						<div class="submit-button">
+						  	<input id="submitButton" type="submit" value="Apply" class="button">
+					  	</div>
+					</form>
+					<div th:if="${error}">
+		   				 <p style="color: red;">There are empty fields, please fill up</p>
+					</div>
+					<div th:if="${error2}">
+		   				 <p style="color: red;">Minimum salary required for credit card application is $1000.</p>
+					</div>
+				</div>
+			</div>
+			<h2>Card Information</h2>
+			<div class="card-info-container">
+				<div class="card-info">
+					<div class="card-name-container">
+						<h3>Ultimate Cashback Card</h3>
+					</div>
+					
+					<div class="card-image-container">
+						<img src="/ultimate-card.png">
+					</div>
+					<div class="card-description-cashback-container">
+						<label class="info-label"> Card Description: </label>
+						<p class="card-description">
+							Introducing the Ultimate Cashback Card — your go-to choice for maximizing savings with every swipe! 
+							Tailored for trendsetting youths and dynamic executives, this card transforms everyday dining purchases into a rewarding experience.  
+							Embrace the smart way to spend and watch your savings accumulate swiftly with every dining transaction. 
+							Join the savvy spenders who make every dollar count and apply for your Ultimate Cashback Card today!
+						</p>
+						<div class="cashback-info">
+							<label class="info-label"> Cashback: </label>
+							<p> 2% cashback on all Dining transactions </p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="card-info">
+					<div class="card-name-container">
+						<h3>SwipeSmart Platinum Card</h3>
+					</div>
+					
+					<div class="card-image-container">
+						<img class="platinum-card-img" src="/platinum-card.png">
+					</div>
+					<div class="card-description-cashback-container">
+						<label class="info-label"> Card Description: </label>
+						<p class="card-description">
+							Introducing the SwipeSmart Platinum Card — the ultimate choice for the discerning high-flyer who demands nothing less than premium service and exclusive rewards. 
+							Designed with the elite traveler and sophisticated shopper in mind, this card offers unparalleled access to a world of luxury and privilege. 
+							From first-class travel upgrades to elite dining experiences and access to private events, the SwipeSmart Platinum Card caters to every aspect of the upscale lifestyle.
+							Elevate your status and embark on a journey of refined elegance with the SwipeSmart Platinum Card, where premium is the standard.
+						</p>
+						<div class="cashback-info">
+							<label class="info-label"> Cashback: </label>
+							<p> 1.5% cashback on all transactions </p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+          </div>
+		</div>
+		<script>
+			let menuOpen = false;
+			const sidebar = document.querySelector('.linkContainerSideBar');
+			const mainpage = document.querySelector('.mainPage');
+			const button = document.querySelector('.openSidebar')
+			
+			button.addEventListener('click', () => {menuOpen = !menuOpen;
+			mainpage.style.marginLeft = menuOpen ? '0' : '200px';
+			sidebar.style.width = menuOpen ? '0' : '200px';})
+		</script>
+	</body>
+</html>
